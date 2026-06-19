@@ -1,0 +1,50 @@
+{
+  "Define a variable": {
+    "prefix": "vr",
+    "body": [
+      "vr ${1:VariableName} ${2:VariableType}\n"
+    ],
+    "description": "Create a new Khayyam variable definition"
+  },
+  "Define a type": {
+    "prefix": "tp",
+    "body": [
+      "tp ${1:TypeName} "
+    ],
+    "description": "Create a new Khayyam type definition block"
+  },
+  "Include Address (in)": {
+    "prefix": "in",
+    "body": [
+      "in \"${1:FileURI}\"\n"
+    ],
+    "description": "Include or link an address/file in Khayyam"
+  },
+  "Define Capsule (cp)": {
+    "prefix": "cp",
+    "body": [
+      "cp {",
+      "\t$0",
+      "}\n"
+    ],
+    "description": "Define a capsule like `tp {name} cp {...}`"
+  },
+  "Define Method (mt)": {
+    "prefix": "mt",
+    "body": [
+      "mt (${1:capsuleName} ${2:capsuleType}) (${3:capsuleName} ${4:capsuleType}) (${5:capsuleName} ${6:capsuleType}, err Error) {",
+      "\t$0",
+      "}\n"
+    ],
+    "description": "Define a method for a capsule like `tp {name} mt ({capsule}) ({args}...) ({returns}...) {}`"
+  },
+  "Define Abstract (ab)": {
+    "prefix": "ab",
+    "body": [
+      "ab {",
+      "\t$0",
+      "}\n"
+    ],
+    "description": "Define an abstract capability or interface like `tp {name} ab {}`"
+  }
+}

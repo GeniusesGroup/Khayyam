@@ -1,0 +1,72 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "Khayyam",
+  "patterns": [
+    { "include": "#comments" },
+    { "include": "#strings" },
+    { "include": "#keywords" },
+    { "include": "#illegal-numbers" },
+    { "include": "#illegal-operators" },
+    { "include": "#identifiers" }
+  ],
+  "repository": {
+    "keywords": {
+      "patterns": [
+        {
+          "name": "keyword.control.khayyam",
+          "match": "\\b(tp|cp|mt|ab|in)\\b"
+        }
+      ]
+    },
+    "identifiers": {
+      "patterns": [
+        {
+          "name": "entity.name.class.khayyam",
+          "match": "\\b[a-zA-Z_][a-zA-Z0-9_]*\\b"
+        }
+      ]
+    },
+    "comments": {
+      "patterns": [
+        {
+          "name": "comment.line.double-slash.khayyam",
+          "match": "//.*$"
+        }
+      ]
+    },
+    "strings": {
+      "patterns": [
+        {
+          "name": "string.quoted.double.khayyam",
+          "begin": "\"",
+          "end": "\"",
+          "patterns": [
+            {
+              "name": "constant.character.escape.khayyam",
+              "match": "\\\\."
+            }
+          ]
+        }
+      ]
+    },
+    "illegal-numbers": {
+      "patterns": [
+        {
+          "name": "invalid.illegal.numeric.khayyam",
+          "match": "\\b\\d+(\\.\\d+)?\\b",
+          "comment": "Naked numbers outside of strings are strict syntax errors in Khayyam"
+        }
+      ]
+    },
+    "illegal-operators": {
+      "patterns": [
+        {
+          "name": "invalid.illegal.operator.khayyam",
+          "match": "(\\+|\\-|\\*|\\/|\\=|\\!|\\<|\\>)",
+          "comment": "Traditional symbols/operators are unsupported and treated as syntax errors"
+        }
+      ]
+    }
+  },
+  "scopeName": "source.khayyam"
+}
