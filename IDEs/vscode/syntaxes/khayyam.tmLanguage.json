@@ -1,27 +1,56 @@
 {
   "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
   "name": "Khayyam",
+  "scopeName": "source.khayyam",
   "patterns": [
     { "include": "#comments" },
     { "include": "#strings" },
-    { "include": "#keywords" },
+    { "include": "#vr-declaration" },
+    { "include": "#tp-declaration" },
+    { "include": "#keywords-control" },
+    { "include": "#typed-pairs" },
     { "include": "#illegal-numbers" },
     { "include": "#illegal-operators" },
     { "include": "#identifiers" }
   ],
   "repository": {
-    "keywords": {
+    "vr-declaration": {
+      "match": "\\b(vr)\\s+([a-zA-Z_][a-zA-Z0-9_]*)\\s+([a-zA-Z_][a-zA-Z0-9_]*)\\b",
+      "captures": {
+        "1": { "name": "keyword.control.khayyam" },
+        "2": { "name": "variable.other.khayyam" },
+        "3": { "name": "entity.name.type.khayyam" }
+      },
+      "comment": "Matches 'vr name type' -> vr(Purple) name(Blue/White) type(Green)"
+    },
+    "tp-declaration": {
+      "match": "\\b(tp)\\s+([a-zA-Z_][a-zA-Z0-9_]*)\\b",
+      "captures": {
+        "1": { "name": "keyword.control.khayyam" },
+        "2": { "name": "entity.name.type.khayyam" }
+      },
+      "comment": "Matches 'tp Name' -> tp(Purple) Name(Green)"
+    },
+    "keywords-control": {
       "patterns": [
         {
           "name": "keyword.control.khayyam",
-          "match": "\\b(tp|cp|mt|ab|in)\\b"
+          "match": "\\b(in|cp|mt|ab|lb)\\b"
         }
       ]
+    },
+    "typed-pairs": {
+      "match": "\\b([a-zA-Z_][a-zA-Z0-9_]*)\\s+([a-zA-Z_][a-zA-Z0-9_]*)\\b",
+      "captures": {
+        "1": { "name": "variable.parameter.khayyam" },
+        "2": { "name": "entity.name.type.khayyam" }
+      },
+      "comment": "Matches any 'name type' pair, like inside method args (mt) -> name(Blue/White) type(Green)"
     },
     "identifiers": {
       "patterns": [
         {
-          "name": "entity.name.class.khayyam",
+          "name": "variable.other.readwrite.khayyam",
           "match": "\\b[a-zA-Z_][a-zA-Z0-9_]*\\b"
         }
       ]
@@ -31,6 +60,11 @@
         {
           "name": "comment.line.double-slash.khayyam",
           "match": "//.*$"
+        },
+        {
+          "name": "comment.block.slash-star.khayyam",
+          "begin": "/\\*",
+          "end": "\\*/"
         }
       ]
     },
@@ -53,8 +87,7 @@
       "patterns": [
         {
           "name": "invalid.illegal.numeric.khayyam",
-          "match": "\\b\\d+(\\.\\d+)?\\b",
-          "comment": "Naked numbers outside of strings are strict syntax errors in Khayyam"
+          "match": "\\b\\d+(\\.\\d+)?\\b"
         }
       ]
     },
@@ -62,11 +95,9 @@
       "patterns": [
         {
           "name": "invalid.illegal.operator.khayyam",
-          "match": "(\\+|\\-|\\*|\\/|\\=|\\!|\\<|\\>)",
-          "comment": "Traditional symbols/operators are unsupported and treated as syntax errors"
+          "match": "(\\+|\\-|\\*|\\/|\\=|\\==|\\!|\\<|\\>)"
         }
       ]
     }
-  },
-  "scopeName": "source.khayyam"
+  }
 }
