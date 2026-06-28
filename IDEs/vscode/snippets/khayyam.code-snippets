@@ -29,13 +29,13 @@
   },
   "Define Abstract (ab)": {
     "prefix": "ab",
-    "body": "ab\n",
+    "body": "ab {$0}\n",
     "description": "Define an abstract capability or interface"
   },
-  "label (lb)": {
-    "prefix": "lb",
-    "body": "lb ${1:LocationLabel} {\n\t$0\n}\n",
-    "description": "Wrap a block code"
+  "[Code] Scope (sc)": {
+    "prefix": "sc",
+    "body": "sc ${1:LocationLabel} {\n\t$0\n}\n",
+    "description": "Define to wrap a code scope"
   },
   // 
   // 
@@ -64,12 +64,12 @@
   },
   "Abstraction type": {
     "prefix": "tpa",
-    "body": "tp ${1:Name} ab\n",
+    "body": "tp ${1:Name} ab {$0}\n",
     "description": "Snippet to define an abstraction type"
   },
-  "Label type": {
-    "prefix": "tpl",
-    "body": "tp ${1:Name} lb {\n\t$0\n}\n",
-    "description": "Snippet to define a label type"
+  "Code scope type": {
+    "prefix": "tps",
+    "body": "tp ${1:Name} sc {\n\t$0\n}\n",
+    "description": "Snippet to define a code scope type"
   },
 }

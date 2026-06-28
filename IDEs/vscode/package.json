@@ -10,7 +10,7 @@
   "categories": [
     "Programming Languages"
   ],
-  "icon": "./icon.png",
+  "icon": "./images/khayyam-icon.png",
   "galleryBanner": {
     "color": "green",
     "theme": "dark"
@@ -30,7 +30,11 @@
         "extensions": [
           ".kh"
         ],
-        "configuration": "./language-configuration.json"
+        "configuration": "./language-configuration.json",
+        "icon": {
+          "light": "./images/khayyam-file-icon.png",
+          "dark": "./images/khayyam-file-icon.png"
+        }
       }
     ],
     "grammars": [
